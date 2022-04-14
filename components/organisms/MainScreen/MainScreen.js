@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
-import { addTodo } from '../store/todoSlice';
-import { InputField } from './InputField';
-import { TodoList } from './TodoList';
+import { addTodo } from '../../../store/todoSlice';
+import { InputField } from '../../molecules/InputField/InputField';
+import { TodoList } from '../../molecules/TodoList/TodoList';
 
 export const MainScreen = () => {
 	const [text, setText] = useState('');

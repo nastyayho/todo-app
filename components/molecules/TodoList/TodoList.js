@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, FlatList, View } from 'react-native';
-import { Todo } from './Todo';
+import { Todo } from '../Todo/Todo';
 import { useSelector } from 'react-redux';
 
 export const TodoList = () => {
