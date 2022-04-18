@@ -9,8 +9,19 @@ export const Todo = ({ todo }) => {
 	const { id, text, completed } = todo;
 	const dispatch = useDispatch();
 
+	const styles = StyleSheet.create({
+		todo: {
+			marginBottom: 10,
+			flexDirection: 'row',
+			alignItems: 'stretch',
+		},
+	});
+
 	return (
-		<TouchableOpacity style={styles.todo} activeOpacity={0.9}>
+		<TouchableOpacity 
+			style={styles.todo} 
+			activeOpacity={0.9}
+		>
 			<TodoText
 				id={id}
 				text={text}
@@ -24,11 +35,3 @@ export const Todo = ({ todo }) => {
 		</TouchableOpacity>
 	);
 };
-
-const styles = StyleSheet.create({
-	todo: {
-		marginBottom: 10,
-		flexDirection: 'row',
-		alignItems: 'stretch',
-	},
-});

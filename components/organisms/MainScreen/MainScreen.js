@@ -13,6 +13,14 @@ export const MainScreen = () => {
 		setText('');
 	};
 
+	const styles = StyleSheet.create({
+		container: {
+			paddingHorizontal: 20,
+			paddingVertical: 10,
+			backgroundColor: 'transparent',
+		},
+	});
+
 	return (
 		<View style={styles.container}>
 			<InputField
@@ -24,11 +32,3 @@ export const MainScreen = () => {
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-		// height: '90%',
-	},
-});

@@ -4,29 +4,32 @@ import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import { Navbar } from './components/molecules/Navbar/Navbar';
 import { MainScreen } from './components/organisms/MainScreen/MainScreen';
-import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
-import { LinearGradient } from 'expo-linear-gradient';
+import { defaultTheme, ThemeContext } from './theme';
+import * as Font from 'expo-font';
 
 const getFonts = () => Font.loadAsync({
 	'luckiestguy-regular': require('./assets/fonts/luckiestguy-regular.ttf'),
+	'roboto-medium': require('./assets/fonts/roboto-medium.ttf'),
+	'roboto-regular': require('./assets/fonts/roboto-regular.ttf'),
 });
+
+
 
 export default function App() {
 	const [fontsLoaded, setFontsLoaded] = useState(false);
 	
 	if (fontsLoaded) {
 		return (
-			<Provider store={store}>				
-				<LinearGradient
-					start={{x: 1, y: 0}}
-					end={{x: 0, y: 1}}
-					colors={['#ffbdbe', '#fdfcfa']}
-					style={styles.app}
-				>
-					<Navbar title="Todo App" />
-					<MainScreen />
-				</LinearGradient>
+			<Provider store={store}>	
+				<ThemeContext.Provider value={defaultTheme}>		
+					<View
+						style={styles.app}
+					>
+						<Navbar title="Todo App" />
+						<MainScreen />
+					</View>
+				</ThemeContext.Provider>	
 			</Provider>
 		);
 	} else {
@@ -43,6 +46,6 @@ export default function App() {
 const styles = StyleSheet.create({
 	app: {
 		flex: 1,
-		// backgroundColor: '#eae2d7',
+		backgroundColor: '#eae2d7',
 	},
 });

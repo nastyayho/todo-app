@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
 	StyleSheet,
 	View,
 	TouchableOpacity,
 	Text,
 } from 'react-native';
+import { ThemeContext } from '../../../theme';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const AddTaskBtn = ({ handleSubmit }) => {
+	const theme = useContext(ThemeContext);
+
+	const styles = StyleSheet.create({
+		shadow: {
+			alignSelf: 'stretch',
+			marginLeft: 10,
+			marginBottom: 10,
+			shadowColor:  '#000',
+			shadowOffset: {
+				width: 0,
+				height: 2,
+			},
+			shadowRadius: 2.62,
+			shadowOpacity: 0.23,
+			elevation: 4,
+		},
+
+		button: {
+			minWidth: 20,
+			height: 56,
+			paddingHorizontal: 20,
+			paddingVertical: 10,
+			backgroundColor: theme.colors.main,
+			borderRadius: 3,
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+
+		text: {
+			color: theme.colors.bgApp,
+			fontSize: theme.text.btnText.fontSize,
+			fontFamily: theme.text.btnText.fontFamily,
+		}
+	});
     
 	return (
 		<View style={styles.shadow}>
@@ -15,40 +51,9 @@ export const AddTaskBtn = ({ handleSubmit }) => {
 				onPress={handleSubmit}
                 activeOpacity={0.6}
 			>
-				<Text style={styles.buttonText}>Add</Text>
+				{/* <Text style={styles.text}>Add</Text> */}
+				<MaterialIcons name="add-task" size={24} color={theme.colors.bgApp} />
 			</TouchableOpacity>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	shadow: {
-        alignSelf: 'stretch',
-        marginLeft: 10,
-        marginBottom: 10,
-        // shadowColor: '#000000',
-		// shadowOffset: {
-		// 	width: 0,
-		// 	height: 3
-		// },
-		// shadowRadius: 5,
-		// shadowOpacity: 1.0,
-		// elevation: 3,
-	},
-
-	button: {
-        minWidth: 20,
-        height: 56,
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-		backgroundColor: '#010414',
-		borderRadius: 3,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-
-	buttonText: {
-		color: '#fdfcfa',
-		fontSize: 16,
-	},
-});

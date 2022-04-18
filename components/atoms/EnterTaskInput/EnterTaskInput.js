@@ -1,43 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
 	StyleSheet,
 	View,
 	TextInput,
 } from 'react-native';
+import { ThemeContext } from '../../../theme';
 
 export const EnterTaskInput = ({ text, handleInput }) => {
+	const theme = useContext(ThemeContext);
+
+	const styles = StyleSheet.create({
+		input: {
+			height: 56,
+			borderStyle: 'solid',
+			borderWidth: 1,
+			borderColor: theme.colors.main,
+			borderRadius: 3,
+			backgroundColor: 'transparent',
+			padding: 10,
+			color: theme.colors.main,
+			fontSize: theme.text.inputText.fontSize,
+			fontFamily: theme.text.inputText.fontFamily,
+		},
+	});
     
 	return (
-		<View style={styles.shadow}>
+		<View style={{
+			flexGrow: 1,
+			maxWidth: '77.8%',
+		}}>
 			<TextInput
-                placeholderTextColor="#998c90"
-                selectionColor="#010414"
-				style={styles.input}
+                placeholderTextColor={theme.colors.bgTodo}
+                selectionColor={theme.colors.main}
 				onChangeText={handleInput}
 				value={text}
 				placeholder={'Введите название дела'}
 				autoCorrect={false}
 				autoCapitalize="none"
+				style={styles.input}
 			/>
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	shadow: {
-        flexGrow: 1,
-        maxWidth: '77.8%',
-	},
-
-	input: {
-        height: 56,
-		borderStyle: 'solid',
-		borderWidth: 1,
-		borderColor: '#010414',
-		borderRadius: 3,
-		backgroundColor: 'transparent',
-		padding: 10,
-		color: '#010414',
-		fontSize: 16,
-	},
-});

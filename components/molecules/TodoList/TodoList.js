@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, FlatList, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Todo } from '../Todo/Todo';
 import { useSelector } from 'react-redux';
 
@@ -20,5 +20,3 @@ export const TodoList = () => {
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({});
