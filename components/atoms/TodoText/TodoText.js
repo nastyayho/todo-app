@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
-
 export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 	const theme = useContext(ThemeContext);
 
@@ -18,20 +17,27 @@ export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 			color: theme.colors.bgApp,
 			fontSize: theme.text.todoText.fontSize,
 			fontFamily: theme.text.todoText.fontFamily,
+			// shadowColor:  '#000',
+			// shadowOffset: {
+			// 	width: 1,
+			// 	height: 2,
+			// },
+			// shadowRadius: 2.62,
+			// shadowOpacity: 0.23,
+			// elevation: 3,
 		},
-	
+
 		textCompleted: {
 			opacity: 0.5,
 			textDecorationLine: 'line-through',
+			backgroundColor: theme.colors.second,
 		},
 	});
 
 	return (
 		<Text
 			style={
-				completed
-					? [styles.textCompleted, styles.text]
-					: styles.text
+				completed ? [styles.text, styles.textCompleted] : styles.text
 			}
 			onLongPress={() => toggleTodoComplete({ id })}
 		>
@@ -39,5 +45,3 @@ export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 		</Text>
 	);
 };
-
-

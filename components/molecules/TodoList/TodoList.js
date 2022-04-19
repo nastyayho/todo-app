@@ -11,11 +11,7 @@ export const TodoList = () => {
 			<FlatList
 				data={todos}
 				keyExtractor={(item) => item.id.toString()}
-				renderItem={({ item }) => (
-					<Todo
-						todo={item}
-					/>
-				)}
+				renderItem={({ item }) => <Todo todo={item} />}
 			/>
 		</View>
 	);

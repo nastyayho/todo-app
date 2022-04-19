@@ -1,9 +1,5 @@
 import React, { useContext } from 'react';
-import {
-	StyleSheet,
-	View,
-	TextInput,
-} from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
 export const EnterTaskInput = ({ text, handleInput }) => {
@@ -23,15 +19,17 @@ export const EnterTaskInput = ({ text, handleInput }) => {
 			fontFamily: theme.text.inputText.fontFamily,
 		},
 	});
-    
+
 	return (
-		<View style={{
-			flexGrow: 1,
-			maxWidth: '77.8%',
-		}}>
+		<View
+			style={{
+				flexGrow: 1,
+				maxWidth: '77.8%',
+			}}
+		>
 			<TextInput
-                placeholderTextColor={theme.colors.bgTodo}
-                selectionColor={theme.colors.main}
+				placeholderTextColor={theme.colors.bgTodo}
+				selectionColor={theme.colors.main}
 				onChangeText={handleInput}
 				value={text}
 				placeholder={'Введите название дела'}

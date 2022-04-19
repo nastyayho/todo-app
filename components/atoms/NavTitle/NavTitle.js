@@ -14,9 +14,5 @@ export const NavTitle = ({ title }) => {
 		},
 	});
 
-	return (
-		<Text style={styles.nav}>
-			{title}
-		</Text>
-	);
+	return <Text style={styles.nav}>{title}</Text>;
 };

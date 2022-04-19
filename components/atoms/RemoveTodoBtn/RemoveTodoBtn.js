@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -31,7 +31,11 @@ export const RemoveTodoBtn = ({ id, removeTodo }) => {
 			style={styles.button}
 			onPress={() => removeTodo({ id })}
 		>
-			<MaterialCommunityIcons name="delete" size={20} color={theme.colors.bgTodo} />
+			<MaterialCommunityIcons
+				name="delete"
+				size={20}
+				color={theme.colors.second}
+			/>
 			{/* <Text style={styles.buttonText}>&times;</Text> */}
 		</TouchableOpacity>
 	);
