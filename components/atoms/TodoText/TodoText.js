@@ -8,11 +8,12 @@ export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 	const styles = StyleSheet.create({
 		text: {
 			maxWidth: '89%',
+			width: '100%',
 			flexDirection: 'row',
 			alignItems: 'center',
 			padding: 15,
 			borderRadius: 3,
-			flexGrow: 1,
+			// flexGrow: 1,
 			backgroundColor: theme.colors.bgTodo,
 			color: theme.colors.bgApp,
 			fontSize: theme.text.todoText.fontSize,

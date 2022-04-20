@@ -12,18 +12,10 @@ export const RemoveTodoBtn = ({ id, removeTodo }) => {
 			paddingVertical: 5,
 			paddingHorizontal: 5,
 			backgroundColor: 'transparent',
-			// borderStyle: 'solid',
-			// borderWidth: 1,
-			// borderColor: theme.colors.bgTodo,
-			// borderRadius: 3,
 			fontSize: 16,
 			justifyContent: 'center',
 			alignItems: 'center',
 		},
-
-		// buttonText: {
-		// 	color: theme.colors.bgTodo,
-		// },
 	});
 
 	return (
@@ -36,7 +28,6 @@ export const RemoveTodoBtn = ({ id, removeTodo }) => {
 				size={20}
 				color={theme.colors.second}
 			/>
-			{/* <Text style={styles.buttonText}>&times;</Text> */}
 		</TouchableOpacity>
 	);
 };

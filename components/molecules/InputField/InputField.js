@@ -8,6 +8,7 @@ export const InputField = ({ text, handleInput, handleSubmit }) => {
 	const styles = StyleSheet.create({
 		inputField: {
 			marginBottom: 15,
+			paddingHorizontal: 20,
 			height: 56,
 			flexDirection: 'row',
 			justifyContent: 'space-between',

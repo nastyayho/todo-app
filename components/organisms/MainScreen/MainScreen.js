@@ -15,7 +15,7 @@ export const MainScreen = () => {
 
 	const styles = StyleSheet.create({
 		container: {
-			paddingHorizontal: 20,
+			flex: 1,
 			paddingVertical: 10,
 			backgroundColor: 'transparent',
 		},
