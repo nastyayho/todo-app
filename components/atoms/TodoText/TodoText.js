@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
-export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
+export const TodoText = ({ text, completed, visibleText }) => {
 	const theme = useContext(ThemeContext);
 
 	const styles = StyleSheet.create({
+		textWrapper: {
+			position: 'relative',
+			marginHorizontal: 20,
+		},
+
 		text: {
-			maxWidth: '89%',
-			width: '100%',
+			// maxWidth: '89%',
+			minWidth: '100%',
 			flexDirection: 'row',
 			alignItems: 'center',
 			padding: 15,
@@ -18,14 +23,6 @@ export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 			color: theme.colors.bgApp,
 			fontSize: theme.text.todoText.fontSize,
 			fontFamily: theme.text.todoText.fontFamily,
-			// shadowColor:  '#000',
-			// shadowOffset: {
-			// 	width: 1,
-			// 	height: 2,
-			// },
-			// shadowRadius: 2.62,
-			// shadowOpacity: 0.23,
-			// elevation: 3,
 		},
 
 		textCompleted: {
@@ -36,13 +33,16 @@ export const TodoText = ({ id, text, completed, toggleTodoComplete }) => {
 	});
 
 	return (
-		<Text
-			style={
-				completed ? [styles.text, styles.textCompleted] : styles.text
-			}
-			onLongPress={() => toggleTodoComplete({ id })}
-		>
-			{text}
-		</Text>
+		<View style={styles.textWrapper}>
+			<Text
+				style={
+					completed
+						? [styles.text, styles.textCompleted]
+						: styles.text
+				}
+			>
+				{visibleText}
+			</Text>
+		</View>
 	);
 };

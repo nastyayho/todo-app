@@ -43,6 +43,11 @@ const defaultTheme = {
 			fontFamily: 'roboto-medium',
 			fontSize: 16,
 		},
+
+		modal: {
+			fontFamily: 'roboto-regular',
+			fontSize: 20,
+		},
 	},
 
 	icons: {

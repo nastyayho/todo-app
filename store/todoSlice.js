@@ -14,6 +14,7 @@ const todoSlice = createSlice({
 					id: Date.now().toString(),
 					text: action.payload.text,
 					completed: false,
+					modalOpened: false,
 				});
 			} else {
 				Alert.alert('Упс!', 'Название дела не может быть пустым', [
@@ -32,9 +33,17 @@ const todoSlice = createSlice({
 			);
 			toggledTodo.completed = !toggledTodo.completed;
 		},
+		setModalOpen(state, action) {
+			const todoModal = state.todos.find(
+				(todo) => todo.id === action.payload.id
+			);
+			todoModal.modalOpened = !todoModal.modalOpened;
+			if (action.payload.text) {
+				todoModal.text = action.payload.text;
+			}
+		},
 	},
 });
 
 export const { addTodo, removeTodo, toggleTodoComplete } = todoSlice.actions;
-
 export default todoSlice.reducer;

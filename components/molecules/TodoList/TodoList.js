@@ -1,14 +1,23 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { StyleSheet, FlatList, View } from 'react-native';
 import { Todo } from '../Todo/Todo';
 import { useSelector } from 'react-redux';
 
 export const TodoList = () => {
 	const todos = useSelector((state) => state.todos.todos);
 
+	const styles = StyleSheet.create({
+		list: {
+			marginTop: 10,
+			// marginHorizontal: 20,
+		},
+	});
+
 	return (
 		<View>
 			<FlatList
+			   	inverted
+				style={styles.list}
 				data={todos}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => <Todo todo={item} />}

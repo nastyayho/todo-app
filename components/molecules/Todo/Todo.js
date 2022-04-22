@@ -1,79 +1,53 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { removeTodo, toggleTodoComplete } from '../../../store/todoSlice';
-import { RemoveTodoBtn } from '../../atoms/RemoveTodoBtn/RemoveTodoBtn';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { TodoText } from '../../atoms/TodoText/TodoText';
+import { removeTodo, toggleTodoComplete } from '../../../store/todoSlice';
 import Draggable from 'react-native-draggable';
+import { AllTextModal } from '../../molecules/AllTextModal/AllTextModal';
 
 export const Todo = ({ todo }) => {
-	const { id, text, completed } = todo;
+	const { id, text, completed, modalOpened } = todo;
 	const dispatch = useDispatch();
+	const [visibleText, setVisibleText] = useState('');
+	const state = useSelector((state) => state);
+
+	useEffect(() => {
+		if (text.split('').length > 23) {
+			setVisibleText(text.split('').slice(0, 23).join('') + '...')
+		} else {
+			setVisibleText(text)
+		}
+	}, [text]);
 
 	const styles = StyleSheet.create({
 		todo: {
-			// flex: 1,
-			marginHorizontal: 20,
-			// marginBottom: 10,
-			// flexDirection: 'row',
-			// alignItems: 'stretch',
+			marginBottom: 10,
+			width: '100%',
 			alignItems: 'flex-start',
-			// height: 60,
-			minHeight: 60,
+			height: 51,
 		},
 	});
 
 	return (
-		<View
-			style={styles.todo}
-		>
-			<Draggable 
+		<View style={styles.todo}>
+			<Draggable
 				shouldReverse={true}
-				renderSize={60}
+				touchableOpacityProps={{ activeOpacity: 0.9 }}
 				minY={0}
 				maxY={0}
-				style={styles.todoInner}
+				onShortPressRelease={() => dispatch(setModalOpen({ id, text }))}
+				onLongPress={() => dispatch(toggleTodoComplete({ id }))}
+				onDragRelease={(event, gestureState) => {
+					if (gestureState.dx > 300 || gestureState.vx > 2.5) {
+						dispatch(removeTodo({ id }));
+						console.log(state);
+					}
+				}}
 			>
-				
-				<TodoText
-					id={id}
-					text={text}
-					completed={completed}
-					toggleTodoComplete={() => dispatch(toggleTodoComplete({ id }))}
-				/>
-				{/* <RemoveTodoBtn
-					id={id}
-					removeTodo={() => dispatch(removeTodo({ id }))}
-				/> */}
-			</Draggable>
-			{/* <TodoText
-				id={id}
-				text={text}
-				completed={completed}
-				toggleTodoComplete={() => dispatch(toggleTodoComplete({ id }))}
-			/>
-			<RemoveTodoBtn
-				id={id}
-				removeTodo={() => dispatch(removeTodo({ id }))}
-			/> */}
+				<TodoText text={text} completed={completed} visibleText={visibleText} />
+				<AllTextModal text={text} modalOpened={modalOpened}/>
+			</Draggable>	
 		</View>
 	);
-
-	// return (
-	// 	<TouchableOpacity
-	// 		style={styles.todo}
-	// 		activeOpacity={0.9}
-	// 	>
-	// 		<TodoText
-	// 			id={id}
-	// 			text={text}
-	// 			completed={completed}
-	// 			toggleTodoComplete={() => dispatch(toggleTodoComplete({ id }))}
-	// 		/>
-	// 		<RemoveTodoBtn
-	// 			id={id}
-	// 			removeTodo={() => dispatch(removeTodo({ id }))}
-	// 		/>
-	// 	</TouchableOpacity>
-	// );
 };

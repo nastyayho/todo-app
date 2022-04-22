@@ -1,8 +1,12 @@
-import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import React, { useContext }  from 'react';
+import { StyleSheet, View, Image, Alert } from 'react-native';
 import { NavTitle } from '../../atoms/NavTitle/NavTitle';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { ThemeContext } from '../../../theme';
 
 export const Navbar = ({ title }) => {
+	const theme = useContext(ThemeContext);
+
 	const styles = StyleSheet.create({
 		navBar: {
 			// position: 'realtive',
@@ -23,6 +27,12 @@ export const Navbar = ({ title }) => {
 			height: 30,
 			backgroundColor: 'transparent',
 		},
+
+		info: {
+			position: 'absolute',
+			top: '53%',
+			right: 20,
+		},
 	});
 
 	return (
@@ -32,6 +42,17 @@ export const Navbar = ({ title }) => {
 				source={require('../../../assets/images/cat.png')}
 				style={styles.image}
 				transparent
+			/>
+			<SimpleLineIcons
+				name="info"
+				size={24}
+				color={theme.colors.main}
+				style={styles.info}
+				onPress={() => {Alert.alert(
+					'Подсказка',
+					'1. Прочитать дело целиком: быстрое касание; \n 2. Пометить дело как выполненное: долгое касание; \n 3. Удалить дело: свайп влево или вправо',
+					[{ text: 'Понятно' }]
+				)}}
 			/>
 		</View>
 	);
