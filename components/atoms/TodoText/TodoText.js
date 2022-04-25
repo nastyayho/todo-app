@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
-export const TodoText = ({ text, completed, visibleText }) => {
+export const TodoText = ({ completed, visibleText }) => {
 	const theme = useContext(ThemeContext);
 
 	const styles = StyleSheet.create({
@@ -12,13 +12,11 @@ export const TodoText = ({ text, completed, visibleText }) => {
 		},
 
 		text: {
-			// maxWidth: '89%',
 			minWidth: '100%',
 			flexDirection: 'row',
 			alignItems: 'center',
 			padding: 15,
 			borderRadius: 3,
-			// flexGrow: 1,
 			backgroundColor: theme.colors.bgTodo,
 			color: theme.colors.bgApp,
 			fontSize: theme.text.todoText.fontSize,

@@ -2,12 +2,9 @@ import React from 'react';
 
 const palette = {
 	blue: '#85b7bc',
-	white: '#efeae6',
+	white: '#eae2d7',
 	brown: '#422413',
-    // secondBrown: '#73584b',
     lightBrown: '#c59775',
-	// brownGradient: 'linear-gradient(270deg, #422413, #85b7bc)',
-    gray: '#c0bfc3',
 	yellow: '#ead702',
 };
 
@@ -44,9 +41,14 @@ const defaultTheme = {
 			fontSize: 16,
 		},
 
-		modal: {
+		modalText: {
 			fontFamily: 'roboto-regular',
 			fontSize: 20,
+		},
+
+		modalCompleted: {
+			fontFamily: 'roboto-regular',
+			fontSize: 24,
 		},
 	},
 

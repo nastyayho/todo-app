@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import { addTodo } from '../../../store/todoSlice';
-import { InputField } from '../../molecules/InputField/InputField';
+import { AddTodoField } from '../../molecules/AddTodoField/AddTodoField';
 import { TodoList } from '../../molecules/TodoList/TodoList';
 
 export const MainScreen = () => {
@@ -23,7 +23,7 @@ export const MainScreen = () => {
 
 	return (
 		<View style={styles.container}>
-			<InputField
+			<AddTodoField
 				text={text}
 				handleInput={setText}
 				handleSubmit={addTask}

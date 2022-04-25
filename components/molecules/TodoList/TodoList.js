@@ -9,7 +9,6 @@ export const TodoList = () => {
 	const styles = StyleSheet.create({
 		list: {
 			marginTop: 10,
-			// marginHorizontal: 20,
 		},
 	});
 

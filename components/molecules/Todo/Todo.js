@@ -1,22 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { StyleSheet, View, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { TodoText } from '../../atoms/TodoText/TodoText';
 import { removeTodo, toggleTodoComplete } from '../../../store/todoSlice';
 import Draggable from 'react-native-draggable';
-import { AllTextModal } from '../../molecules/AllTextModal/AllTextModal';
+import { AllTextModal } from '../../organisms/AllTextModal/AllTextModal';
 
 export const Todo = ({ todo }) => {
-	const { id, text, completed, modalOpened } = todo;
+	const { id, text, completed } = todo;
 	const dispatch = useDispatch();
 	const [visibleText, setVisibleText] = useState('');
-	const state = useSelector((state) => state);
+	const [modalOpen, setModalOpen] = useState(false);
+
+	const removeTask = function ({ id }) {
+		Alert.alert('Удалить дело', `${visibleText} ?`, [
+			{ text: 'Да', onPress: () => dispatch(removeTodo({ id })) },
+			{ text: 'Нет' },
+		]);
+	};
 
 	useEffect(() => {
 		if (text.split('').length > 23) {
-			setVisibleText(text.split('').slice(0, 23).join('') + '...')
+			setVisibleText(text.split('').slice(0, 23).join('') + '...');
 		} else {
-			setVisibleText(text)
+			setVisibleText(text);
 		}
 	}, [text]);
 
@@ -36,18 +43,23 @@ export const Todo = ({ todo }) => {
 				touchableOpacityProps={{ activeOpacity: 0.9 }}
 				minY={0}
 				maxY={0}
-				onShortPressRelease={() => dispatch(setModalOpen({ id, text }))}
+				onShortPressRelease={() => setModalOpen(true)}
 				onLongPress={() => dispatch(toggleTodoComplete({ id }))}
 				onDragRelease={(event, gestureState) => {
-					if (gestureState.dx > 300 || gestureState.vx > 2.5) {
-						dispatch(removeTodo({ id }));
-						console.log(state);
+					if (gestureState.dx > 250 || gestureState.vx > 2) {
+						removeTask({ id });
 					}
 				}}
 			>
-				<TodoText text={text} completed={completed} visibleText={visibleText} />
-				<AllTextModal text={text} modalOpened={modalOpened}/>
-			</Draggable>	
+				<TodoText completed={completed} visibleText={visibleText} />
+				<AllTextModal
+					text={text}
+					modalOpen={modalOpen}
+					setModalOpen={setModalOpen}
+					completed={completed}
+					toggleTodoComplete={() => dispatch(toggleTodoComplete({ id }))}
+				/>
+			</Draggable>
 		</View>
 	);
 };

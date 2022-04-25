@@ -3,10 +3,10 @@ import { StyleSheet, View } from 'react-native';
 import { AddTaskBtn } from '../../atoms/AddTaskBtn/AddTaskBtn';
 import { EnterTaskInput } from '../../atoms/EnterTaskInput/EnterTaskInput';
 
-export const InputField = ({ text, handleInput, handleSubmit }) => {
+export const AddTodoField = ({ text, handleInput, handleSubmit }) => {
 
 	const styles = StyleSheet.create({
-		inputField: {
+		addTodoField: {
 			marginBottom: 15,
 			paddingHorizontal: 20,
 			height: 56,
@@ -17,7 +17,7 @@ export const InputField = ({ text, handleInput, handleSubmit }) => {
 	});
 
 	return (
-		<View style={styles.inputField}>
+		<View style={styles.addTodoField}>
 			<EnterTaskInput text={text} handleInput={handleInput} />
 			<AddTaskBtn handleSubmit={handleSubmit} />
 		</View>
