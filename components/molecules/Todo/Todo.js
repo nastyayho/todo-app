@@ -46,7 +46,7 @@ export const Todo = ({ todo }) => {
 				onShortPressRelease={() => setModalOpen(true)}
 				onLongPress={() => dispatch(toggleTodoComplete({ id }))}
 				onDragRelease={(event, gestureState) => {
-					if (gestureState.dx > 250 || gestureState.vx > 2) {
+					if (Math.abs(gestureState.dx) > 250 || gestureState.vx > 2) {
 						removeTask({ id });
 					}
 				}}
@@ -58,6 +58,7 @@ export const Todo = ({ todo }) => {
 					setModalOpen={setModalOpen}
 					completed={completed}
 					toggleTodoComplete={() => dispatch(toggleTodoComplete({ id }))}
+					id={id}
 				/>
 			</Draggable>
 		</View>

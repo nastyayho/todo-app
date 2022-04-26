@@ -9,10 +9,10 @@ const todoSlice = createSlice({
 
 	reducers: {
 		addTodo(state, action) {
-			if (action.payload.text.trim()) {
+			if (action.payload.inputText.trim()) {
 				state.todos.push({
 					id: Date.now().toString(),
-					text: action.payload.text,
+					text: action.payload.inputText,
 					completed: false,
 				});
 			} else {
@@ -32,8 +32,21 @@ const todoSlice = createSlice({
 			);
 			toggledTodo.completed = !toggledTodo.completed;
 		},
+		editTodo(state, action) {
+			if (action.payload.inputText.trim()) {
+				const editedTodo = state.todos.find(
+					(todo) => todo.id === action.payload.id
+				);
+				editedTodo.text = action.payload.inputText;
+				// console.log(action.payload);
+			} else {
+				Alert.alert('Упс!', 'Название дела не может быть пустым', [
+					{ text: 'Понятно' },
+				]);
+			}
+		},
 	},
 });
 
-export const { addTodo, removeTodo, toggleTodoComplete } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodoComplete, editTodo } = todoSlice.actions;
 export default todoSlice.reducer;

@@ -3,8 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { EditTaskInput } from '../../atoms/EditTaskInput/EditTaskInput';
 import { EditTaskBtn } from '../../atoms/EditTaskBtn/EditTaskBtn';
 
-export const EditTodoField = ({ text, handleInput, handleSubmit, openedEditTodo, id }) => {
-
+export const EditTodoField = ({
+	inputText,
+	handleInput,
+	handleSubmit,
+	openedEditTodo,
+}) => {
 	const styles = StyleSheet.create({
 		editTodoField: {
 			marginTop: 30,
@@ -20,8 +24,14 @@ export const EditTodoField = ({ text, handleInput, handleSubmit, openedEditTodo,
 	});
 
 	return (
-		<View style={ openedEditTodo ? styles.editTodoField : [styles.editTodoField, styles.editNoView]}>
-			<EditTaskInput text={text} handleInput={handleInput}/>
+		<View
+			style={
+				openedEditTodo
+					? styles.editTodoField
+					: [styles.editTodoField, styles.editNoView]
+			}
+		>
+			<EditTaskInput inputText={inputText} handleInput={handleInput} />
 			<EditTaskBtn handleSubmit={handleSubmit} />
 		</View>
 	);

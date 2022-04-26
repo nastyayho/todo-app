@@ -3,7 +3,10 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
 import { Feather } from '@expo/vector-icons';
 
-export const ModalEditBtn = ({ setOpenedEditTodo }) => {
+export const ModalEditBtn = ({
+	setOpenedEditTodo,
+	openedEditTodo,
+}) => {
 	const theme = useContext(ThemeContext);
 
 	const styles = StyleSheet.create({
@@ -17,10 +20,18 @@ export const ModalEditBtn = ({ setOpenedEditTodo }) => {
 	return (
 		<TouchableOpacity
 			style={styles.edit}
-			onPress={() => setOpenedEditTodo(true)}
+			onPress={() =>
+				openedEditTodo
+					? setOpenedEditTodo(false)
+					: setOpenedEditTodo(true)
+			}
 			activeOpacity={0.6}
 		>
-			<Feather name="edit" size={28} color={theme.colors.main} />
+			<Feather
+				name="edit"
+				size={28}
+				color={openedEditTodo ? theme.colors.second : theme.colors.main}
+			/>
 		</TouchableOpacity>
 	);
 };

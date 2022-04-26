@@ -9,8 +9,8 @@ export const EditTaskBtn = ({ handleSubmit }) => {
 	const styles = StyleSheet.create({
 		button: {
 			alignSelf: 'stretch',
-			marginLeft: 10,
-			minWidth: 20,
+			// marginLeft: 10,
+			minWidth: '18%',
 			paddingHorizontal: 20,
 			paddingVertical: 10,
 			backgroundColor: theme.colors.main,

@@ -2,10 +2,16 @@ import React, { useContext } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
-export const EnterTaskInput = ({ text, handleInput }) => {
+export const EnterTaskInput = ({ inputText, handleInput }) => {
 	const theme = useContext(ThemeContext);
 
 	const styles = StyleSheet.create({
+		inputWrapper: {
+			paddingRight: 10,
+			flexGrow: 1,
+			maxWidth: '80%',
+		},
+
 		input: {
 			height: 56,
 			borderStyle: 'solid',
@@ -21,17 +27,12 @@ export const EnterTaskInput = ({ text, handleInput }) => {
 	});
 
 	return (
-		<View
-			style={{
-				flexGrow: 1,
-				maxWidth: '77.8%',
-			}}
-		>
+		<View style={styles.inputWrapper}>
 			<TextInput
 				placeholderTextColor={theme.colors.bgTodo}
 				selectionColor={theme.colors.main}
 				onChangeText={handleInput}
-				value={text}
+				value={inputText}
 				placeholder={'Введите название дела'}
 				autoCorrect={false}
 				autoCapitalize="none"

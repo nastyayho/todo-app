@@ -6,11 +6,11 @@ import { AddTodoField } from '../../molecules/AddTodoField/AddTodoField';
 import { TodoList } from '../../molecules/TodoList/TodoList';
 
 export const MainScreen = () => {
-	const [text, setText] = useState('');
+	const [inputText, setInputText] = useState('');
 	const dispatch = useDispatch();
 	const addTask = () => {
-		dispatch(addTodo({ text }));
-		setText('');
+		dispatch(addTodo({ inputText }));
+		setInputText('');
 	};
 
 	const styles = StyleSheet.create({
@@ -24,8 +24,8 @@ export const MainScreen = () => {
 	return (
 		<View style={styles.container}>
 			<AddTodoField
-				text={text}
-				handleInput={setText}
+				inputText={inputText}
+				handleInput={setInputText}
 				handleSubmit={addTask}
 			/>
 			<TodoList />
