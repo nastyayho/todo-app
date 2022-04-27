@@ -12,8 +12,8 @@ export const ModalEditBtn = ({
 	const styles = StyleSheet.create({
 		edit: {
 			position: 'absolute',
-			top: 23,
-			right: 80,
+			top: 3,
+			right: 58,
 		},
 	});
 

@@ -9,8 +9,8 @@ export const ModalCloseBtn = ({ setModalOpen }) => {
 	const styles = StyleSheet.create({
 		close: {
 			position: 'absolute',
-			top: 20,
-			right: 20,
+			top: 0,
+			right: 0,
 		},
 	});
 

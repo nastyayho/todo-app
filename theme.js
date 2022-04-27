@@ -1,11 +1,10 @@
 import React from 'react';
 
 const palette = {
-	blue: '#85b7bc',
+	blue: '#84ba8d',
 	white: '#eae2d7',
 	brown: '#422413',
-    lightBrown: '#c59775',
-	yellow: '#ead702',
+	lightBrown: '#c59775',
 };
 
 const defaultTheme = {
@@ -13,11 +12,10 @@ const defaultTheme = {
 	colors: {
 		bgApp: palette.white,
 		textSecondary: palette.gray,
-		third: palette.yellow,
 		second: palette.blue,
 		main: palette.brown,
-        bgTodo: palette.lightBrown,
-        // gradient: palette.brownGradient,
+		bgTodo: palette.lightBrown,
+		// gradient: palette.brownGradient,
 	},
 
 	text: {
@@ -51,44 +49,7 @@ const defaultTheme = {
 			fontSize: 24,
 		},
 	},
-
-	icons: {
-		regular: {
-			width: 14,
-			flex: 1,
-			marginRight: 4,
-			justifyContent: 'center',
-		},
-	},
-
-	shadows: {
-		base: {
-			shadowColor: '#000',
-			shadowOffset: {
-				width: 0,
-				height: 2,
-			},
-			shadowOpacity: 0.23,
-			shadowRadius: 2.62,
-
-			elevation: 4,
-		},
-	},
-
-	dimens: {
-		zero: 0,
-		xs: 4,
-		s: 8,
-		m: 16,
-		l: 24,
-		xl: 40,
-		xxl: 60,
-	},
 };
 
 export { defaultTheme };
-// type ThemeType = typeof defaultTheme;
-// type ThemeColor = keyof ThemeType['colors'];
-
-// export type { ThemeType, ThemeColor };
 export const ThemeContext = React.createContext(defaultTheme);

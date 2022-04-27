@@ -19,7 +19,6 @@ export const EditTaskInput = ({ inputText, handleInput }) => {
 			borderColor: theme.colors.main,
 			borderRadius: 3,
 			backgroundColor: 'transparent',
-			// paddingHorizontal: 10,
 			color: theme.colors.main,
 			fontSize: theme.text.inputText.fontSize,
 			fontFamily: theme.text.inputText.fontFamily,
@@ -35,7 +34,6 @@ export const EditTaskInput = ({ inputText, handleInput }) => {
 				value={inputText}
 				placeholder={'Введите название дела'}
 				autoCorrect={false}
-				autoCapitalize="none"
 				style={styles.input}
 			/>
 		</View>

@@ -35,7 +35,6 @@ export const EnterTaskInput = ({ inputText, handleInput }) => {
 				value={inputText}
 				placeholder={'Введите название дела'}
 				autoCorrect={false}
-				autoCapitalize="none"
 				style={styles.input}
 			/>
 		</View>

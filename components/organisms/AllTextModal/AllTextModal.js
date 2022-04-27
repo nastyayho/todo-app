@@ -1,12 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { StyleSheet, View, Modal, Text } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, View, Modal } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { editTodo } from '../../../store/todoSlice';
-import { ModalCloseBtn } from '../../atoms/ModalCloseBtn/ModalCloseBtn';
-import { ModalCompleteBtn } from '../../atoms/ModalCompleteBtn/ModalCompleteBtn';
-import { ModalEditBtn } from '../../atoms/ModalEditBtn/ModalEditBtn';
+import { ModalHeader } from '../../molecules/ModalHeader/ModalHeader';
 import { EditTodoField } from '../../molecules/EditTodoField/EditTodoField';
 import { ThemeContext } from '../../../theme';
+import { ModalTodoText } from '../../atoms/ModalTodoText/ModalTodoText';
 
 export const AllTextModal = ({
 	text,
@@ -26,14 +25,6 @@ export const AllTextModal = ({
 			setOpenedEditTodo(false);
 		}
 	};
-	const [completedText, setCompletedText] = useState(completed);
-	useEffect(() => {
-		if (completed) {
-			setCompletedText('Выполнено');
-		} else {
-			setCompletedText('Не выполнено');
-		}
-	});
 	const theme = useContext(ThemeContext);
 
 	const styles = StyleSheet.create({
@@ -42,13 +33,6 @@ export const AllTextModal = ({
 			paddingVertical: 20,
 			paddingHorizontal: 20,
 			backgroundColor: theme.colors.bgApp,
-		},
-
-		completedText: {
-			marginTop: 3,
-			color: theme.colors.second,
-			fontSize: theme.text.modalCompleted.fontSize,
-			fontFamily: theme.text.modalCompleted.fontFamily,
 		},
 
 		modalText: {
@@ -62,24 +46,20 @@ export const AllTextModal = ({
 	return (
 		<Modal visible={modalOpen} animationType="slide">
 			<View style={styles.modal}>
-				<Text style={styles.completedText}>{completedText}</Text>
-				<ModalCompleteBtn
-					completed={completed}
+				<ModalHeader
+					setModalOpen={setModalOpen}
 					toggleTodoComplete={toggleTodoComplete}
-					id={id}
-				/>
-				<ModalEditBtn
+					completed={completed}
 					setOpenedEditTodo={setOpenedEditTodo}
 					openedEditTodo={openedEditTodo}
 				/>
-				<ModalCloseBtn setModalOpen={setModalOpen} />
 				<EditTodoField
 					openedEditTodo={openedEditTodo}
 					inputText={inputText}
 					handleInput={setInputText}
 					handleSubmit={editTask}
 				/>
-				<Text style={styles.modalText}>{text}</Text>
+				<ModalTodoText text={text} />
 			</View>
 		</Modal>
 	);

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ThemeContext } from '../../../theme';
-import { MaterialIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 export const ModalCompleteBtn = ({ completed, toggleTodoComplete, id }) => {
 	const theme = useContext(ThemeContext);
@@ -9,18 +9,22 @@ export const ModalCompleteBtn = ({ completed, toggleTodoComplete, id }) => {
 	const styles = StyleSheet.create({
 		completedBtn: {
 			position: 'absolute',
-			top: 19,
-			right: 135,
+			top: 3,
+			right: 115,
 		},
 	});
 
 	return (
 		<TouchableOpacity
-			style={ styles.completedBtn}
+			style={styles.completedBtn}
 			onPress={() => toggleTodoComplete({ id })}
 			activeOpacity={0.6}
 		>
-			<MaterialIcons name="done" size={38} color={completed ? theme.colors.second : theme.colors.main} />
+			<AntDesign
+				name="flag"
+				size={30}
+				color={completed ? theme.colors.second : theme.colors.main}
+			/>
 		</TouchableOpacity>
 	);
 };

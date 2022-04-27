@@ -18,6 +18,13 @@ const getFonts = () =>
 export default function App() {
 	const [fontsLoaded, setFontsLoaded] = useState(false);
 
+	const styles = StyleSheet.create({
+		app: {
+			flex: 1,
+			backgroundColor: '#eae2d7',
+		},
+	});
+
 	if (fontsLoaded) {
 		return (
 			<Provider store={store}>
@@ -39,10 +46,3 @@ export default function App() {
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	app: {
-		flex: 1,
-		backgroundColor: '#eae2d7',
-	},
-});
