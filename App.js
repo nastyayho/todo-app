@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
-import { StyleSheet, View } from 'react-native';
-import { Navbar } from './components/molecules/Navbar/Navbar';
-import { MainScreen } from './components/organisms/MainScreen/MainScreen';
+import { MainPage } from './components/organisms/MainPage/MainPage';
 import AppLoading from 'expo-app-loading';
 import { defaultTheme, ThemeContext } from './theme';
 import * as Font from 'expo-font';
@@ -18,21 +16,11 @@ const getFonts = () =>
 export default function App() {
 	const [fontsLoaded, setFontsLoaded] = useState(false);
 
-	const styles = StyleSheet.create({
-		app: {
-			flex: 1,
-			backgroundColor: '#eae2d7',
-		},
-	});
-
 	if (fontsLoaded) {
 		return (
 			<Provider store={store}>
 				<ThemeContext.Provider value={defaultTheme}>
-					<View style={styles.app}>
-						<Navbar title="Todo App" />
-						<MainScreen />
-					</View>
+					<MainPage />
 				</ThemeContext.Provider>
 			</Provider>
 		);

@@ -1,45 +1,25 @@
-import React, { useContext } from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { NavTitle } from '../../atoms/NavTitle/NavTitle';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { ThemeContext } from '../../../theme';
+import { NavBtn } from '../../atoms/NavBtn/NavBtn';
 
-export const Navbar = ({ title }) => {
-	const theme = useContext(ThemeContext);
-
+export const Navbar = () => {
 	const styles = StyleSheet.create({
 		navBar: {
-			height: 100,
+			height: 90,
 			flexDirection: 'row',
-			alignItems: 'center',
+			alignItems: 'flex-end',
 			justifyContent: 'center',
 			backgroundColor: 'transparent',
 			paddingTop: 16,
-		},
-
-		info: {
-			position: 'absolute',
-			top: '52%',
-			right: 20,
+			paddingBottom: 16,
 		},
 	});
 
 	return (
 		<View style={styles.navBar}>
-			<NavTitle title={title} />
-			<SimpleLineIcons
-				name="info"
-				size={24}
-				color={theme.colors.main}
-				style={styles.info}
-				onPress={() => {
-					Alert.alert(
-						'Подсказка',
-						'\n1. Прочитать дело целиком: быстрое касание; \n \n2. Пометить дело как выполненное: долгое касание; \n \n3. Удалить дело: свайп влево или вправо',
-						[{ text: 'Понятно' }]
-					);
-				}}
-			/>
+			<NavTitle />
+			{/* <NavBtn /> */}
 		</View>
 	);
 };

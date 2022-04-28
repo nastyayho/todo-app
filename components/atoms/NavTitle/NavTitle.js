@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { ThemeContext } from '../../../theme';
 
-export const NavTitle = ({ title }) => {
+export const NavTitle = () => {
 	const theme = useContext(ThemeContext);
 
-	const styles = StyleSheet.create({	
+	const styles = StyleSheet.create({
 		navText: {
 			color: theme.colors.main,
 			backgroundColor: 'transparent',
@@ -25,7 +25,7 @@ export const NavTitle = ({ title }) => {
 
 	return (
 		<View style={styles.navTitle}>
-			<Text style={styles.navText}>{title}</Text>
+			<Text style={styles.navText}>Todo App</Text>
 			<Image
 				source={require('../../../assets/images/cat.png')}
 				style={styles.image}
